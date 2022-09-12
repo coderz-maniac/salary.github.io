@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Nextac Pay Slip</title>
+</head>
+<body>
+
+    <section class="nextac-form" >
+        <div class="container-fluid">
+            <div class="container">
+    <div class="row nextac">
+      <div class="display-header" id="display-header">
+        <div class="col-lg-3"><img src="Images/Logo.png" />
+            <p>Office 401, Plot 7-C/I, Main Khayaban-e-IttehadRoad,
+                DHA Phase 7, Karachi South
+                </p>
+        </div>
+       
+
+    </div>
+      <div class="top-header" id="top-header" style="display: none;">
+            <div class="col-lg-3"><img src="Images/Logo.png" />
+                <p>Office 401, Plot 7-C/I, Main Khayaban-e-IttehadRoad,
+                    DHA Phase 7, Karachi South
+                    </p>
+            </div>
+           
+
+        </div>
+      </div>
+    <fieldset id="filledform">		
+     
+   <h2>Enter Employee Information details to generate payslip</h2>
+   
+   <form class="requires-validation" name="myform" action="/" onsubmit="return validateForm()" method="post" required>                   
+<div class="row">  
+<div class="col">
+  <select class="form-control" name="monthss" id="months" form="monthss" required>
+    <option selected="true" disabled="disabled" value="Select Month">Select Pay Month</option>
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+            </select>
+</div>
+<div class="col">
+  <input type="text" class="form-control" Placeholder="Enter Employee Id"  min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "6" name="employeeid" id="EmpID" required>
+</div>
+
+  <div class="col">
+    <input type="text" class="form-control"  Placeholder="Enter Employee Name"  id="empName" required>
+</div>
+<div class="col">
+  <input class="form-control" Placeholder="Enter CNIC: 42301-1234567-8" id="cnic" type="tel"  pattern="^\d{5}-\d{7}-\d{1}$" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "15" onkeypress="return numberOnly(event)" required>
+</div>
+
+</div> 
+
+<div class="row">
+
+  <div class="col">
+    <input placeholder="Enter Joining Date" type="text" onfocus="(this.type='date')" class="form-control"  id="joiningDate" required>
+  </div>  
+
+  <div class="col">
+    <input type="text" class="form-control" Placeholder="Enter Designation" id="designation" required>
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" Placeholder="Enter Department" id="depID" required>
+  </div>
+  <div class="col">
+    <!-- <input type="text" class="form-control" Placeholder="Enter Payment Method" id="payMethod" required> -->
+    <select class="form-control" name="paymentMethods" id="paymentMethod" form="paymentMethods" required>
+      <option selected="true" disabled="disabled" value="Select Month">Select Payment Method</option>
+      <option value="Cash">Cash</option>
+      <option value="Cheque">Cheque</option>
+      <option value="Cheque">IBAN No.</option>
+              </select>
+</div> 
+  </div> 
+
+
+<div class="row">
+
+  <div class="col">
+    <input type="text" class="form-control" Placeholder="Enter Bank Name" id="bName" required>
+</div>
+
+<div class="col">
+  <input type="text" class="form-control" Placeholder="IBAN #: PK40MEZN0000001123456702" id="brName" pattern="PK[a-zA-Z0-9]{2}\s?([a-zA-Z0-9]{4}\s?){1}([0-9]{4}\s?){4}\s?" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "24" required>
+</div>
+
+  <div class="col">
+    <input type="number" class="form-control" Placeholder="Enter Late IN" id="lateAbsent" min="0" max="31" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "2" oninput="this.value = Math.abs(this.value)" required>
+</div>
+<div class="col">
+  <input type="number" class="form-control" Placeholder="Enter Half Day" id="halfDay" min="0"  max="31" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "2" oninput="this.value = Math.abs(this.value)" required>
+</div>
+
+</div>  
+
+<div class="row">
+  <div class="col">
+    <input type="number" class="form-control" Placeholder="Enter Absent" id="absentCount" min="0"  max="31" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "2" oninput="this.value = Math.abs(this.value)" required>
+  </div>
+  <div class="col">
+    <input type="number" class="form-control" Placeholder="Enter Basic Salary" id="bSalary" min="0"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "6" oninput="this.value = Math.abs(this.value)" required>
+  </div>
+  
+  <div class="col">
+    <input type="number" class="form-control" Placeholder="Enter House Rent" id="hRent" min="0"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)" >
+  </div>
+
+  <div class="col">
+    <input type="number" class="form-control" Placeholder="Enter Medical Allowance" id="mAllow" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)" >
+</div>
+  
+
+</div>  
+
+
+<div class="row">
+  <div class="col">
+    <input type="number" class="form-control" Placeholder="Enter Cost of Living Allowance" id="cAllow" min="0"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)" >
+  </div>
+
+    <div class="col">
+      <input type="number" class="form-control" Placeholder="Enter Income Tax amount" id="incomeTax" min="0"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="col">
+      <input type="number" class="form-control" Placeholder="Enter Special amount" id="spAmount" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="col">
+    <input type="number" class="form-control" Placeholder="Enter EOBI Tax" id="ebTax" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)" required>
+  </div>
+</div>  
+  
+
+<div class="row"> 
+  <div class="col">
+    <input type="number" class="form-control" Placeholder="Enter Car Allowance" id="carAllowance" min="0"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)">
+  </div>   
+ <div class="col">
+  <input type="number" class="form-control" Placeholder="Enter Arrears" id="arrearsBalance" min="0"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)" required>
+</div>
+<div class="col">
+  <input type="number" class="form-control" Placeholder="Enter Extra days Amount" id="exAmount" min="0"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" oninput="this.value = Math.abs(this.value)" required> 
+</div>
+<div class="col">
+    
+</div>
+
+</div>  
+<div class="payslip-btn">
+  <button type="submit" id="btnHide">Generate Pay Slip</button>
+</div>
+
+</form>
+
+    
+  </fieldset>
+  
+    <div class="row nextac-table">
+
+            
+        <table class="form-table">
+            <thead>
+              <tr>
+                <th colspan="2" class="empInfo">Employee Information</th>
+                 <td colspan="2"  class="Salary" data-column="">Salary Slip for the month of: <span id="payMonthdiv" ></span> </td>
+                  
+              </tr>
+               </thead>
+            <tbody>
+              <tr class="upperInfo">
+                <td data-column="">Employee No:</td>
+                <td id="empIdDiv" ></td>
+                <td data-column="">Employee Name:</td>
+                <td id="empDiv" ></td>
+              </tr>
+              <tr>
+                <td class="cnicNo" data-column="">CNIC No:</td>
+                <td id="CNICdiv" ></td> 
+                <td data-column="">Joining Date:</td>
+                <td id="jdatediv" ></td>             
+                
+              </tr>
+              <tr>
+                           
+                <td data-column="">Designation:</td>
+                <td id="desDiv" ></td>
+                <td data-column="">Department:</td>
+                <td id="depDiv" ></td>
+              </tr>
+
+              <tr>                           
+                <td data-column="">Total Days:</td>
+                <td id="tDaysDiv" ></td>
+                <td data-column="">Earning Days:</td>
+                <td id="eaDiv" ></td>
+              </tr>
+
+              <tr>
+                <td data-column="">Per Day Salary:</td>
+                <td id="pdDiv"></td>
+                <td data-column="">Payment Through:</td>
+                <td id="pmDiv" ></td>                
+              </tr>
+
+              <tr>
+                <td data-column="">Bank Name:</td>
+                    <td id="bnDiv" ></td>
+				  <td colspan="2" data-column="">IBAN No: <span id="brDiv"></span></td>
+                              
+              </tr>
+              <tr class="headingTop">
+                <th colspan="2">Salary & Allowances</th>
+                <th colspan="2">Deductions</th>                
+              </tr>
+              <tr class="headingRow">
+                <th>Title</th>
+                <th class="centerClass" >Earnings</th>
+                <th>Title</th>
+                <th class="centerClass" >Amount</th>
+              </tr>
+              <tr class="bottomRow">
+                <td data-column="">Basic:</td>
+                <td class="centerClass" id="bsDiv" ></td>                
+                <td class="absentdays" data-column="">Absent Days:</td>
+                <td class="centerClass" id="laDiv" ></td>
+              </tr>
+              <tr class="bottomRow">
+                <td data-column="">House Rent:</td>
+                <td class="centerClass" id="hrDiv" ></td>
+                <td data-column="">Half Day:</td>
+                <td class="centerClass" id="hfDiv" ></td>
+                              
+              </tr>
+              <tr class="bottomRow">
+                <td data-column="">Medical:</td>
+                <td class="centerClass" id="maDiv" ></td>
+                <td data-column="">Late In:</td>
+                <td class="centerClass" id="liDiv" ></td>
+             
+              </tr>
+              <tr class="bottomRow">
+                <td data-column="">Living Allowance:</td>
+                <td class="centerClass" id="caDiv" ></td>
+                <td data-column="">Income Tax:</td>
+                <td class="centerClass" id="itDiv" ></td>
+              </tr>
+              <tr>
+                
+              </tr>
+              <tr class="bottomRow">
+                <td data-column="">Special:</td>
+                <td class="centerClass"  id="spDiv"></td>
+                <td data-column="">EOBI Tax:</td>
+                <td class="centerClass" id="eobiDiv" ></td>
+                      </tr>
+
+                <tr class="bottomRow">
+                <td data-column="">Car Allowance:</td>
+                <td class="centerClass" id="carDiv"></td>                       
+                <td data-column=""></td>
+                <td data-column=""></td>
+                              </tr>      
+
+              <tr class="bottomRow">
+                <td data-column="">Arrears:</td>
+                <td class="centerClass" id="arDiv"></td>
+                <td data-column=""></td>
+                <td data-column=""></td>
+                              </tr>
+
+              <tr class="bottomRow bottom">
+                <td data-column="">Extra Days:</td>
+                <td class="centerClass"  id="exDiv"></td>
+                <td data-column=""></td>
+                <td data-column=""></td>
+                          </tr>
+              <tr class="bottomRow inner">
+                <td data-column="">Total:</td>
+                <td id="tearnDiv"></td>
+                <td data-column="">Net Salary:</td>
+                <td id="npDiv" ></td>                
+              </tr>
+       
+          
+              
+                  </tr>
+            </tbody>
+          </table> 
+          <p class="bottom-line">This is system generated payslip, please email to <a href="mailto:hr@thenextac.com">hr@thenextac.com</a> if you have any queries.</p>   
+    </div>
+    
+    </div>
+    </div>
+    </div>
+    </section>
+    <div id="editor"></div>
+    
+
+</body>
+<script type="text/javascript" src="Js/css"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+<script>
+
+function showMsg() {
+  
+    var select = document.getElementById('months');
+	var option = select.options[select.selectedIndex];
+    document.getElementById('payMonthdiv').innerHTML = option.value;
+
+    var emp = document.getElementById('EmpID').value;
+	document.getElementById('empIdDiv').innerHTML = emp;
+
+
+    var empname = document.getElementById('empName').value;
+	document.getElementById('empDiv').innerHTML = empname;
+
+
+  var CNIC = document.getElementById('cnic').value;
+	document.getElementById('CNICdiv').innerHTML = CNIC;
+
+  var joindate = document.getElementById('joiningDate').value;
+	document.getElementById('jdatediv').innerHTML = joindate;
+
+    var designation = document.getElementById('designation').value;
+	document.getElementById('desDiv').innerHTML = designation;
+
+  var depart = document.getElementById('depID').value;
+	document.getElementById('depDiv').innerHTML = depart;
+
+
+  var paym = document.getElementById('paymentMethod');
+	var payoption = paym.options[paym.selectedIndex];
+    document.getElementById('pmDiv').innerHTML = payoption.value;
+
+  var bname = document.getElementById('bName').value;
+	document.getElementById('bnDiv').innerHTML = bname;
+
+  var brname = document.getElementById('brName').value;
+	document.getElementById('brDiv').innerHTML = brname;
+
+    var bsalary = document.getElementById('bSalary').value;
+	document.getElementById('bsDiv').innerHTML = bsalary;
+
+  var hrent = document.getElementById('hRent').value;
+	document.getElementById('hrDiv').innerHTML = hrent;
+
+  var mallow = document.getElementById('mAllow').value;
+	document.getElementById('maDiv').innerHTML = mallow;
+
+  var callow = document.getElementById('cAllow').value;
+	document.getElementById('caDiv').innerHTML = callow;
+
+  var incometax = document.getElementById('incomeTax').value;
+	document.getElementById('itDiv').innerHTML = incometax;
+
+  var specialAmount = document.getElementById('spAmount').value;
+	document.getElementById('spDiv').innerHTML = specialAmount;
+
+  var eobiTax = document.getElementById('ebTax').value;
+	document.getElementById('eobiDiv').innerHTML = eobiTax;
+
+  var carAll = document.getElementById('carAllowance').value;
+	document.getElementById('carDiv').innerHTML = carAll;
+
+  var arrearamount = document.getElementById('arrearsBalance').value;
+	document.getElementById('arDiv').innerHTML = arrearamount;  
+
+  var extrapay = document.getElementById('exAmount').value;
+	document.getElementById('exDiv').innerHTML = extrapay;  
+
+  
+
+
+  
+// for calculation
+
+
+var totalEarning = parseInt(bsalary)+parseInt(hrent)+parseInt(mallow)+parseInt(callow)+parseInt(specialAmount)+parseInt(carAll)+parseInt(arrearamount)+parseInt(extrapay);
+document.getElementById("tearnDiv").innerHTML = totalEarning;
+
+
+
+// for late deduction
+var month = document.getElementById('months').value;
+if(month == "January" || month == "March" || month == "May" || month == "July" || month == "August" || month == "October" || month == "December" )
+{
+var basicSalary1 = document.getElementById('bSalary').value;
+var perDaySalary = parseInt(basicSalary1) / 31; //workingdays
+document.getElementById("pdDiv").innerHTML = Math.round(perDaySalary);
+var totalworkingdays = 31;
+document.getElementById("tDaysDiv").innerHTML = totalworkingdays;
+var absent = document.getElementById('absentCount').value;
+var earningdays = parseInt(totalworkingdays) - parseInt(absent);
+document.getElementById("eaDiv").innerHTML = earningdays;
+var halfdayamount = parseInt(perDaySalary)/2;
+var halfdeduction = document.getElementById('halfDay').value;
+var halfamount = parseInt(halfdayamount)*parseInt(halfdeduction) ;
+document.getElementById("hfDiv").innerHTML = halfamount;
+var absentamount = parseInt(perDaySalary)*parseInt(absent) ;
+document.getElementById("laDiv").innerHTML = absentamount;
+var lateDeduction = document.getElementById('lateAbsent').value;
+
+if (lateDeduction < 6) {
+  document.getElementById("liDiv").innerHTML = 0;  
+} 
+else if(lateDeduction >= 6 && lateDeduction < 12){
+  
+  var lateamount = parseInt(perDaySalary) * 1;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=12 && lateDeduction < 18){
+  
+  var lateamount = parseInt(twolateamount) * 2;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=18 && lateDeduction < 24){
+  
+  var lateamount = parseInt(threelateamount) * 3;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=24 && lateDeduction < 30){
+  
+  var lateamount = parseInt(fourlateamount) * 4;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+}
+
+else if(month == "February")
+{
+  var basicSalary1 = document.getElementById('bSalary').value;
+var perDaySalary = parseInt(basicSalary1) / 28; //workingdays
+document.getElementById("pdDiv").innerHTML = perDaySalary;
+var totalworkingdays = 31;
+document.getElementById("tDaysDiv").innerHTML = totalworkingdays;
+var absent = document.getElementById('absentCount').value;
+var earningdays = parseInt(totalworkingdays) - parseInt(absent);
+document.getElementById("eaDiv").innerHTML = earningdays;
+var halfdayamount = parseInt(perDaySalary)/2;
+var halfdeduction = document.getElementById('halfDay').value;
+var halfamount = parseInt(halfdayamount)*parseInt(halfdeduction) ;
+document.getElementById("hfDiv").innerHTML = halfamount;
+var absentamount = parseInt(perDaySalary)*parseInt(absent) ;
+document.getElementById("laDiv").innerHTML = absentamount;
+var lateDeduction = document.getElementById('lateAbsent').value;
+
+if (lateDeduction < 6) {
+  document.getElementById("liDiv").innerHTML = 0;  
+} 
+else if(lateDeduction >= 6 && lateDeduction < 12){
+  
+  var lateamount = parseInt(perDaySalary) * 1;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=12 && lateDeduction < 18){
+  
+  var lateamount = parseInt(twolateamount) * 2;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=18 && lateDeduction < 24){
+  
+  var lateamount = parseInt(threelateamount) * 3;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=24 && lateDeduction < 30){
+  
+  var lateamount = parseInt(fourlateamount) * 4;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+}
+
+
+else if(month == "April" || month == "June" || month == "September" || month == "November")
+{
+  var basicSalary1 = document.getElementById('bSalary').value;
+var perDaySalary = parseInt(basicSalary1) / 30; //workingdays
+document.getElementById("pdDiv").innerHTML = perDaySalary;
+var totalworkingdays = 31;
+document.getElementById("tDaysDiv").innerHTML = totalworkingdays;
+var absent = document.getElementById('absentCount').value;
+var earningdays = parseInt(totalworkingdays) - parseInt(absent);
+document.getElementById("eaDiv").innerHTML = earningdays;
+var halfdayamount = parseInt(perDaySalary)/2;
+var halfdeduction = document.getElementById('halfDay').value;
+var halfamount = parseInt(halfdayamount)*parseInt(halfdeduction) ;
+document.getElementById("hfDiv").innerHTML = halfamount;
+var absentamount = parseInt(perDaySalary)*parseInt(absent) ;
+document.getElementById("laDiv").innerHTML = absentamount;
+var lateDeduction = document.getElementById('lateAbsent').value;
+
+if (lateDeduction < 6) {
+  document.getElementById("liDiv").innerHTML = 0;  
+} 
+else if(lateDeduction >= 6 && lateDeduction < 12){
+  
+  var lateamount = parseInt(perDaySalary) * 1;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=12 && lateDeduction < 18){
+  
+  var lateamount = parseInt(twolateamount) * 2;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=18 && lateDeduction < 24){
+  
+  var lateamount = parseInt(threelateamount) * 3;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+
+else if(lateDeduction >=24 && lateDeduction < 30){
+  
+  var lateamount = parseInt(fourlateamount) * 4;
+  document.getElementById("liDiv").innerHTML = lateamount;
+}
+}
+
+
+var totalEarning = parseInt(bsalary)+parseInt(hrent)+parseInt(mallow)+parseInt(callow)+parseInt(specialAmount)+parseInt(carAll)+parseInt(arrearamount)+parseInt(extrapay);
+var totalDeductAmount = parseInt(absentamount) + parseInt(halfamount) + parseInt(lateamount) + parseInt(incometax) + parseInt(eobiTax);
+var netPay = parseInt(totalEarning)-parseInt(totalDeductAmount);
+document.getElementById("npDiv").innerHTML = netPay;
+
+// for field hidden
+document.getElementById('filledform').style.display = 'none';
+document.getElementById('btnHide').style.display = 'none'; 
+document.getElementById('top-header').style.display = 'block'; 
+document.getElementById('display-header').style.display = 'none'; 
+
+
+}
+
+
+
+
+
+// $('#btnHide').on("click", function(){
+//   let valid = true;
+//   $('[required]').each(function() {
+//     if ($(this).is(':invalid') || !$(this).val()) valid = false;
+//   })
+//   if (!valid ) 
+
+//   alert("Error please fill all fields!");
+//   else if(valid){ 
+//   showMsg(); 
+//   window.print(); 
+//   }
+// })
+
+
+function validateForm() {
+  var x = document.forms["myform"]["employeeid"].value;
+  if (x == "" || x == null) {
+    alert("Employee id must be filled out");
+    return false;
+  }
+  else { 
+  showMsg(); 
+  window.print(); 
+  }
+}
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+
+
+// var basicSalary = document.getElementById('bsalary').value;
+// var incentivePay = document.getElementById('iPay').value;
+// var conveyanceAllowance= document.getElementById('cAllow').value;
+// var medicalAllowance = document.getElementById('mAllow').value;
+// var totalEarning = basicSalary * incentivePay * conveyanceAllowance * medicalAllowance;
+// document.getElementById("teDiv").innerHTML = totalEarning;
+
+
+
+// document.getElementById("paydiv3").innerHTML = z;
+
+$(function () {
+
+$('#cnic').keydown(function (e) {
+ var key = e.charCode || e.keyCode || 0;
+ $text = $(this); 
+ if (key !== 8 && key !== 9) {
+     if ($text.val().length === 5) {
+         $text.val($text.val() + '-');
+     }
+     if ($text.val().length === 13) {
+         $text.val($text.val() + '-');
+     }
+  
+
+ }
+
+})
+});
+
+$('#empName').keypress(function (e) {
+    var regex = new RegExp("^[a-zA-Z_]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+	
+	$('#depID').keypress(function (e) {
+    var regex = new RegExp("^[a-zA-Z_]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+	$('#designation').keypress(function (e) {
+    var regex = new RegExp("^[a-zA-Z_]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+	
+$('#bName').keypress(function (e) {
+    var regex = new RegExp("^[a-zA-Z_]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});	
+	
+	
+function numberOnly(event) {
+        var angka = (event.which) ? event.which : event.keyCode
+        if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+          return false;
+        return true;
+      }
+
+	
+</script>
+
+
+</html>
+
