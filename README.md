@@ -1,2 +1,0 @@
-# salary.github.io
- salary
