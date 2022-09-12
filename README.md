@@ -1,0 +1,2 @@
+# salary.github.io
+ salary
